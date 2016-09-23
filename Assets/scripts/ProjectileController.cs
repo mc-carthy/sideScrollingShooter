@@ -7,7 +7,7 @@ public class ProjectileController : MonoBehaviour {
 	private float moveSpeed = 5;
 
 	private void Start () {
-		Destroy (gameObject, 5);
+		Destroy (gameObject, 3);
 	}
 
 	private void Update () {

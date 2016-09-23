@@ -4,6 +4,8 @@ using System.Collections;
 public class EnemyController : MonoBehaviour {
 
 	[SerializeField]
+	private ParticleSystem particles;
+	[SerializeField]
 	private float moveSpeed;
 
 	private void Update () {
@@ -16,8 +18,17 @@ public class EnemyController : MonoBehaviour {
 
 	private void OnTriggerEnter2D (Collider2D trig) {
 		if (trig.tag == "projectile") {
+			InstantiateParticles ();
 			Destroy (gameObject);
 			Destroy (trig.gameObject);
 		}
+	}
+
+	private void InstantiateParticles () {
+		Instantiate (
+			particles,
+			transform.position,
+			Quaternion.identity
+		);
 	}
 }
