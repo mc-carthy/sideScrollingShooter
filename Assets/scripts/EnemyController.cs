@@ -19,8 +19,10 @@ public class EnemyController : MonoBehaviour {
 	private void OnTriggerEnter2D (Collider2D trig) {
 		if (trig.tag == "projectile") {
 			InstantiateParticles ();
-			Destroy (gameObject);
 			Destroy (trig.gameObject);
+			Destroy (gameObject);
+			ScoreController.instance.IncrementScore ();
+
 		}
 	}
 
