@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
@@ -14,6 +15,12 @@ public class PlayerController : MonoBehaviour {
 		ClampMovement ();
 		if (Input.GetKeyDown(KeyCode.Space)) {
 			SpawnProjectile();
+		}
+	}
+
+	private void OnTriggerEnter2D (Collider2D trig) {
+		if (trig.tag == "enemy") {
+			ReloadLevel ();	
 		}
 	}
 
@@ -37,5 +44,9 @@ public class PlayerController : MonoBehaviour {
 			transform.position,
 			Quaternion.identity
 		);
+	}
+
+	private void ReloadLevel () {
+		SceneManager.LoadScene (SceneManager.GetActiveScene ().name, LoadSceneMode.Single);
 	}
 }
