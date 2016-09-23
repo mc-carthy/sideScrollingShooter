@@ -13,4 +13,11 @@ public class EnemyController : MonoBehaviour {
 	private void Move () {
 		transform.Translate (Vector3.left * moveSpeed);
 	}
+
+	private void OnTriggerEnter2D (Collider2D trig) {
+		if (trig.tag == "projectile") {
+			Destroy (gameObject);
+			Destroy (trig.gameObject);
+		}
+	}
 }
